@@ -1,0 +1,9 @@
+digraph G {
+    rankdir=LR;
+    s0[label="",style=filled,fillcolor=lightgrey];
+    s1 [label="Core 1",style=filled,fillcolor=red];
+    s2 [label="Core 2",style=filled,fillcolor=blue];
+    {rank=same; s1 s2}
+    s0 -> s1;
+    s0 -> s2
+}

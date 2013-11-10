@@ -1,0 +1,4 @@
+digraph G {
+    node[shape=record];
+    lambda[label="λ",style="filled",fillcolor="green"];
+}

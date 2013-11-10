@@ -1,0 +1,5 @@
+To run presentation:
+
+1. Install racket (5.3.5 or later should work), latex, xsltproc, rsvg-convert, and graphviz
+2. Run install.sh script.
+3. Run slideshow python.rkt

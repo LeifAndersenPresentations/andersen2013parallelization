@@ -1,0 +1,18 @@
+digraph G {
+    graph [
+           center=true,
+           nodesep=1.2,
+           sep=6.2,
+           splines=spline
+           ];
+    rankdir=LR;
+    s0 [shape=plaintext, label="", style=""];
+    s8 [shape=plaintext, label="", style="",width=0,height=0];
+    s9 [shape=point];
+    s10 [shape=point];
+    s11 [shape=point];
+    node[label="", style="",rank=2, style=filled,fillcolor=lightgrey];
+    {rank=same; s0 s1}
+    s0 -> s1 -> s2 -> s3 -> s4 -> s5-> s6 -> s7 -> s8;
+    s8 -> s9 -> s10 -> s11[style=invis];
+}

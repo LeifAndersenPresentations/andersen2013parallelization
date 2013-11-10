@@ -1,0 +1,53 @@
+digraph G {
+    node[shape=record];
+    compound=true;
+    subgraph cluster_queue {
+        label = "Queue";
+        style = filled;
+        fillcolor = "green";
+        graph [
+               ranksep="0.01 equally",
+               ];
+        q4[label="state",style="filled",fillcolor="yellow",height=0.1];
+        {rank=same;
+            q3a[shape=point,height=0.1,width=0.1];
+            q3b[shape=point,height=0.1,width=0.1];
+            q3c[shape=point,height=0.1,width=0.1];
+        }
+        q2[label="state",style="filled",fillcolor="yellow",height=0.1];
+        q1[label="state",style="filled",fillcolor="yellow",height=0.1];
+        q4 -> q3a -> q3b -> q3c -> q2 -> q1 [style=invis];
+    }
+    subgraph cluster_actor_1 {
+        label = "Actor 1";
+        style = filled;
+        fillcolor = "gray";
+        s1[label="state",style="filled",fillcolor="yellow",height=0.1];
+    }
+    subgraph cluster_actor_2 {
+        label = "Actor 2";
+        style = filled;
+        fillcolor = "gray";
+        s2[label="state",style="filled",fillcolor="yellow",height=0.1];
+    }
+    subgraph cluster_actor_3 {
+        label = "Actor 3";
+        style = filled;
+        fillcolor = "gray";
+        s3[label="state",style="filled",fillcolor="yellow",height=0.1];
+    }
+    subgraph cluster_actor_4 {
+        label = "Actor 4";
+        style = filled;
+        fillcolor = "gray";
+        s4[label="state",style="filled",fillcolor="yellow",height=0.1];
+    }
+    q1 -> s1 [lhead=cluster_actor_1,ltail=cluster_queue];
+    q1 -> s2 [lhead=cluster_actor_2,ltail=cluster_queue];
+    q1 -> s3 [lhead=cluster_actor_3,ltail=cluster_queue];
+    q1 -> s4 [lhead=cluster_actor_4,ltail=cluster_queue];
+    s1 -> q4 [lhead=cluster_queue,ltail=cluster_actor_1];
+    s2 -> q4 [lhead=cluster_queue,ltail=cluster_actor_2];
+    s3 -> q4 [lhead=cluster_queue,ltail=cluster_actor_3];
+    s4 -> q4 [lhead=cluster_queue,ltail=cluster_actor_4];
+}
