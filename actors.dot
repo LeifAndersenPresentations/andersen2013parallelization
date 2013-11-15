@@ -19,28 +19,54 @@ digraph G {
         q4 -> q3a -> q3b -> q3c -> q2 -> q1 [style=invis];
     }
     subgraph cluster_actor_1 {
-        label = "Actor 1";
+        label = "Producer 1";
         style = filled;
         fillcolor = "gray";
         s1[label="state",style="filled",fillcolor="yellow",height=0.1];
     }
     subgraph cluster_actor_2 {
-        label = "Actor 2";
+        label = "Producer 2";
         style = filled;
         fillcolor = "gray";
         s2[label="state",style="filled",fillcolor="yellow",height=0.1];
     }
     subgraph cluster_actor_3 {
-        label = "Actor 3";
+        label = "Producer 3";
         style = filled;
         fillcolor = "gray";
         s3[label="state",style="filled",fillcolor="yellow",height=0.1];
     }
     subgraph cluster_actor_4 {
-        label = "Actor 4";
+        label = "Producer 4";
         style = filled;
         fillcolor = "gray";
         s4[label="state",style="filled",fillcolor="yellow",height=0.1];
+    }
+    subgraph cluster_explored {
+        label = "Explored";
+        style = filled;
+        fillcolor = "green";
+        graph [
+               ranksep="0.01 equally",
+               ];
+        {rank=same;
+            e4[label="state",style="filled",fillcolor="yellow",height=0.1];
+            e2a[shape=point,height=0.1,width=0.1];
+            e2b[shape=point,height=0.1,width=0.1];
+            e2c[shape=point,height=0.1,width=0.1];
+            e2[label="state",style="filled",fillcolor="yellow",height=0.1];
+        }
+        {rank=same;
+            e3[label="state",style="filled",fillcolor="yellow",height=0.1];
+            e1a[shape=point,height=0.1,width=0.1];
+            e1b[shape=point,height=0.1,width=0.1];
+            e1c[shape=point,height=0.1,width=0.1];
+            e1[label="state",style="filled",fillcolor="yellow",height=0.1];
+        }
+        e4 -> e3 [style=invis];
+        e4 -> e2a -> e2b -> e2c -> e2 [style=invis];
+        e3 -> e1a -> e1b -> e1c -> e1 [style=invis];
+        e2 -> e1 [style=invis];
     }
     q1 -> s1 [lhead=cluster_actor_1,ltail=cluster_queue];
     q1 -> s2 [lhead=cluster_actor_2,ltail=cluster_queue];
@@ -50,4 +76,8 @@ digraph G {
     s2 -> q4 [lhead=cluster_queue,ltail=cluster_actor_2];
     s3 -> q4 [lhead=cluster_queue,ltail=cluster_actor_3];
     s4 -> q4 [lhead=cluster_queue,ltail=cluster_actor_4];
+    s1 -> e4 [lhead=cluster_explored,ltail=cluster_actor_1];
+    s2 -> e4 [lhead=cluster_explored,ltail=cluster_actor_2];
+    s3 -> e2 [lhead=cluster_explored,ltail=cluster_actor_3];
+    s4 -> e2 [lhead=cluster_explored,ltail=cluster_actor_4];
 }

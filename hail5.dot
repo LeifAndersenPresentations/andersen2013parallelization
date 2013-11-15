@@ -1,5 +1,6 @@
 digraph G {
 rankdir=LR;
+node[style=filled,fillcolor=gray];
 s1;
 s2;
 s3;
@@ -141,7 +142,7 @@ s26 -> s59;
 s27 -> s8;
 s28 -> s22;
 s29 -> s58;
-s30 -> s2;
+s30 -> s2 [constraint=false];
 s31 -> s5;
 s32 -> s24;
 s33 -> s32;

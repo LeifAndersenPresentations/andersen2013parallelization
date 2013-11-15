@@ -24,17 +24,20 @@
 (define (double-massive-text txt)
   (text txt (current-main-font) 240))
 
+(define (uber-massive-text txt)
+  (text txt (current-main-font) 600))
+
 (define (medium-$$ txt)
-  (scale ($$ txt) 1.5))
+  (scale/improve-new-text ($$ txt) 1.5))
 
 (define (large-$$ txt)
-  (scale ($$ txt) 2))
+  (scale/improve-new-text ($$ txt) 2))
 
 (define (massive-$$ txt)
-  (scale ($$ txt) 3))
+  (scale/improve-new-text ($$ txt) 3))
 
 (define (double-massive-$$ txt)
-  (scale ($$ txt) 7))
+  (scale/improve-new-text ($$ txt) 7))
 
 ;(define (medium-$$ txt)
 ;  (medium-text txt))
@@ -269,7 +272,7 @@
            (apply vc-append `(,(- (* height fade) height) ,@data))))))))
 
 (define (insert-slide #:title [title ""] #:reversed [reversed #f]
-                      #:left [left ""] #:right [right ""]
+                      #:left [left (t "")] #:right [right (t "")]
                       #:fade-in [fade-in #t] #:fade-out [fade-out #t]
                       #:append [append 'center-h] #:distance [distance 0]
                       #:insert [insert ""] . data)
